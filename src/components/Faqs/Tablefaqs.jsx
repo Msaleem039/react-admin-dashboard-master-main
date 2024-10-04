@@ -36,14 +36,14 @@ const Tablefaqs = () => {
 	  >
 		{!isAddInstructorPage && (
 		  <>
-			<div className='flex justify-between items-center mb-6'>
+			<div className=' items-center mb-6'>
 			  {/* Title */}
-			  <h2 className='text-2xl font-semibold text-gray-100 cursor-pointer'>
-				Instructor
+			  <h2 className=' text-center p-6 text-2xl font-semibold text-gray-100 cursor-pointer'>
+				Faqs
 			  </h2>
 	  
 			  {/* Search and Add Instructor Button */}
-			  <div className='flex items-center space-x-4'>
+			  <div className='flex justify-between items-center space-x-4'>
 				{/* Search Bar */}
 				<div className='relative'>
 				  <input
@@ -57,7 +57,7 @@ const Tablefaqs = () => {
 				</div>
 	  
 				{/* Add Instructor Button */}
-				<Link to='faqs'>
+				<Link to='/addfaq'>
 				  <button className='bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300'>
 					Add Faqs
 				  </button>

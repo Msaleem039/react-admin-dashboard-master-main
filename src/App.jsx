@@ -18,15 +18,18 @@ import AddBlogCate from "./pages/AddBlogCate";
 import AddBlogPost from "./pages/AddBlogPost";
 import Eflayer from "./components/Eflyer/Eflayer";
 import AddFlyers from "./pages/AddFlyers";
-import SPCategories from "./components/SP-C Categories/SPCategories";
+
 import AddSpcategories from "./components/SP-C Categories/AddSpcategories";
 import AddCategory from "./pages/AddCate";
-import SPCBlogPost from "./components/SP-CBlogPost/SPCBlogPost";
+
 import Mainspc from "./components/SP-CBlogPost/Mainspc";
 import MainspcCate from "./components/SP-C Categories/MainspcCate";
 import MainEflyer from "./components/Eflyer/MainEflyer";
 import MainFaqs from "./components/Faqs/MainFaqs";
 import AddSpecialbp from "./components/SP-CBlogPost/AddSpecialbp";
+import AddFaq from "./components/Faqs/AddFaq";
+import Mainblog from "./components/Blog/Mainblog";
+import Mainblogpost from "./components/Blog/MainBlogpost";
 
 
 function App() {
@@ -61,11 +64,12 @@ function App() {
 					<Route path='addblog' element={<AddBlog/>} />
 				</Route>
 		
-				<Route path='/blog-categories' element={<BlogCategories/>}>
+				<Route path='/blog-categories' element={<Mainblog/>}>
 				</Route>
 				<Route path='/addblogcate' element={<AddBlogCate/>} />
+				<Route path='/addfaq' element={<AddFaq/>} />
                         
-				<Route path='/blog-post' element={<BlogPost/>}>
+				<Route path='/blog-post' element={<Mainblogpost/>}>
 					<Route path='addblogpost' element={<AddBlogPost/>} />
 				</Route>
 				<Route path='/eflayer' element={<MainEflyer/>}>
@@ -73,7 +77,6 @@ function App() {
 				</Route>
 				<Route path='/addeflayer' element={<AddFlyers/>} />
 				<Route path='/sp-c-categories' element={<MainspcCate/>}>
-				
 				</Route>
 				<Route path='/addspc' element={<AddSpcategories/>} />
 				<Route path='/specialbp' element={<AddSpecialbp/>} />

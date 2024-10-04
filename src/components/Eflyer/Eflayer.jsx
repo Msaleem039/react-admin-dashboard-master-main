@@ -38,13 +38,13 @@ const Eflayer= () => {
 	  >
 		{!isAddInstructorPage && (
 		  <>
-			<div className='flex justify-between items-center mb-6'>
+			<div className='py-5 text-center items-center mb-6'>
 			  {/* Title */}
 			  <h2 className='text-2xl font-semibold text-gray-100 cursor-pointer'>
-				Courses
+				Eflyer
 			  </h2>
 			  {/* Search and Add Instructor Button */}
-			  <div className='flex items-center space-x-4'>
+			  <div className='flex justify-between items-center space-x-4'>
 				{/* Search Bar */}
 				<div className='relative'>
 				  <input

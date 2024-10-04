@@ -33,12 +33,12 @@ const BlogCategories = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <div className='flex justify-between items-center mb-6 w-full'>
+      <div className='text-center py-5 items-center mb-6 w-full'>
         <h2 className='text-2xl font-semibold text-gray-100 cursor-pointer'>
           Blog Categories
         </h2>
 
-        <div className='flex items-center space-x-4'>
+        <div className='flex justify-between items-center space-x-4'>
           <div className='relative'>
             <input
               type='text'

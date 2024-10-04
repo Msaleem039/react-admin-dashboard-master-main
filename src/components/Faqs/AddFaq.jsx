@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../common/Header";
 
 
-const AddSpcategories = () => {
+const AddFaq = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -55,10 +55,10 @@ const AddSpcategories = () => {
 
   return (
     <div className="flex-1 overflow-auto relative z-10 ">
-      <Header />
+      <Header/>
       <div className="p-6 bg-gray-800 rounded-lg shadow-md max-w-lg mx-auto my-10">
         <h2 className="text-3xl font-semibold text-gray-100 mb-6 text-center">
-          Add Special Categories
+          Add Eflayer
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="mb-4">
@@ -142,10 +142,10 @@ const AddSpcategories = () => {
               type="submit"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 focus:outline-none"
             >
-              Add Spec 
+              Add Faqs
             </button>
 
-    
+   
           </div>
         </form>
       </div>
@@ -153,4 +153,5 @@ const AddSpcategories = () => {
   );
 };
 
-export default AddSpcategories;
+export default AddFaq;
+

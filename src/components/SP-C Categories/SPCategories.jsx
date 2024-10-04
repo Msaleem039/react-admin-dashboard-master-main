@@ -1,156 +1,149 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Search } from "lucide-react";
-import { Link, Outlet , useLocation } from "react-router-dom";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-const userData = [
-	{ id: 1, name: "John Doe", email: "john@example.com", role: "Customer", status: "Active" },
-	{ id: 2, name: "Jane Smith", email: "jane@example.com", role: "Admin", status: "Active" },
-	{ id: 3, name: "Bob Johnson", email: "bob@example.com", role: "Customer", status: "Inactive" },
-	{ id: 4, name: "Alice Brown", email: "alice@example.com", role: "Customer", status: "Active" },
-	{ id: 5, name: "Charlie Wilson", email: "charlie@example.com", role: "Moderator", status: "Active" },
-];
+const AddSpcategories = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
-const SPCategories = () => {
-	const [searchTerm, setSearchTerm] = useState("");
-	const [filteredUsers, setFilteredUsers] = useState(userData);
-	const location = useLocation();
-  
-	const handleSearch = (e) => {
-	  const term = e.target.value.toLowerCase();
-	  setSearchTerm(term);
-	  const filtered = userData.filter(
-		(user) =>
-		  user.name.toLowerCase().includes(term) || user.email.toLowerCase().includes(term)
-	  );
-	  setFilteredUsers(filtered);
-	};
-  
-	// Check if the current route is 'adduser'
-	const isAddInstructorPage = location.pathname.includes("adduser");
-  
-	return (
-		<motion.div
-		className='bg-gray-800 bg-opacity-50 w-full backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700'
-		initial={{ opacity: 0, y: 20 }}
-		animate={{ opacity: 1, y: 0 }}
-		transition={{ delay: 0.2 }}
-	  >
-		{!isAddInstructorPage && (
-		  <>
-			<div className='flex justify-between items-center mb-6'>
-			  {/* Title */}
-			  <h2 className='text-2xl font-semibold text-gray-100 cursor-pointer'>
-				Courses
-			  </h2>
-			  {/* Search and Add Instructor Button */}
-			  <div className='flex items-center space-x-4'>
-				{/* Search Bar */}
-				<div className='relative'>
-				  <input
-					type='text'
-					placeholder='Search users...'
-					className='bg-gray-700 text-white placeholder-gray-400 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
-					value={searchTerm}
-					onChange={handleSearch}
-				  />
-				  <Search className='absolute left-3 top-2.5 text-gray-400' size={18} />
-				</div>
-	  
-				{/* Add Instructor Button */}
-				<Link to='/addspc'>
-				  <button className='bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300'>
-					Add Special Blog Categories
-				  </button>
-				</Link>
-			  </div>
-			</div>
-	  
-			{/* Table */}
-			<div className='overflow-x-auto'>
-			  <table className='min-w-full divide-y divide-gray-700'>
-				<thead>
-				  <tr>
-					<th className='px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider'>
-					  Name
-					</th>
-					<th className='px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider'>
-					  Email
-					</th>
-					<th className='px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider'>
-					  Role
-					</th>
-					<th className='px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider'>
-					  Status
-					</th>
-					<th className='px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider'>
-					  Actions
-					</th>
-				  </tr>
-				</thead>
-	  
-				<tbody className='divide-y divide-gray-700'>
-				  {filteredUsers.map((user) => (
-					<motion.tr
-					  key={user.id}
-					  initial={{ opacity: 0 }}
-					  animate={{ opacity: 1 }}
-					  transition={{ duration: 0.3 }}
-					>
-					  <td className='px-6 py-4 whitespace-nowrap'>
-						<div className='flex items-center'>
-						  <div className='flex-shrink-0 h-10 w-10'>
-							<div className='h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold'>
-							  {user.name.charAt(0)}
-							</div>
-						  </div>
-						  <div className='ml-4'>
-							<div className='text-sm font-medium text-gray-100'>
-							  {user.name}
-							</div>
-						  </div>
-						</div>
-					  </td>
-					  <td className='px-6 py-4 whitespace-nowrap'>
-						<div className='text-sm text-gray-300'>{user.email}</div>
-					  </td>
-					  <td className='px-6 py-4 whitespace-nowrap'>
-						<span className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-800 text-blue-100'>
-						  {user.role}
-						</span>
-					  </td>
-					  <td className='px-6 py-4 whitespace-nowrap'>
-						<span
-						  className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-							user.status === 'Active'
-							  ? 'bg-green-800 text-green-100'
-							  : 'bg-red-800 text-red-100'
-						  }`}
-						>
-						  {user.status}
-						</span>
-					  </td>
-					  <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-300'>
-						<button className='text-indigo-400 hover:text-indigo-300 mr-2'>
-						  Edit
-						</button>
-						<button className='text-red-400 hover:text-red-300'>
-						  Delete
-						</button>
-					  </td>
-					</motion.tr>
-				  ))}
-				</tbody>
-			  </table>
-			</div>
-		  </>
-		)}
-	  
-		{/* Render the Add Instructor form if on the 'adduser' route */}
-		<Outlet />
-	  </motion.div>
-	  
-	);
+  const onSubmit = (data) => {
+    axios.post('https://4bb3-182-181-220-26.ngrok-free.app/api/categories', data)
+      .then(response => {
+        console.log(response);
+        alert("Category added successfully!");
+        navigate("/course-categories");
+      })
+      .catch(error => {
+        console.error(error);
+        alert("Error adding category!");
+      });
   };
-  
-  export default SPCategories;
+  return (
+    <div className="w-full h-screen  flex flex-col">
+      {/* Scrollable Header */}
+   
+      {/* Scrollable Form Section */}
+      <div className=" w-[60%] p-6 bg-gray-800 rounded-lg shadow-md mx-auto">
+        <h2 className="text-3xl block font-semibold text-gray-100 mb-6 text-center">
+          Add Category
+        </h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
+          {/* Category Name */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Category Name</label>
+            <input
+              type="text"
+              {...register("name")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter category name"
+            />
+            {errors.categoryName && <span className="text-red-500">Category Name is required</span>}
+          </div>
+
+          {/* URL Slug */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">URL Slug</label>
+            <input
+              type="text"
+              {...register("url_Slug")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter URL slug"
+            />
+            {errors.urlSlug && <span className="text-red-500">URL Slug is required</span>}
+          </div>
+
+          {/* Short Description */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Short Description</label>
+            <textarea
+              {...register("shortDescription")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter short description"
+            />
+            {errors.shortDescription && <span className="text-red-500">Short Description is required</span>}
+          </div>
+
+          {/* Meta Title */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Meta Title</label>
+            <input
+              type="text"
+              {...register("metaTitle")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter meta title"
+            />
+          </div>
+
+          {/* Meta Description */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Meta Description</label>
+            <textarea
+              {...register("metaDescription")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter meta description"
+            />
+          </div>
+
+          {/* In Sitemap */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">In Sitemap</label>
+            <select
+              {...register("inSitemap")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            {errors.inSitemap && <span className="text-red-500">This field is required</span>}
+          </div>
+
+          {/* Page Index */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Page Index</label>
+            <select
+              {...register("pageIndex")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            {errors.pageIndex && <span className="text-red-500">This field is required</span>}
+          </div>
+
+          {/* Custom Canonical URL */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Custom Canonical URL</label>
+            <input
+              type="url"
+              {...register("canonicalUrl")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter custom canonical URL"
+            />
+          </div>
+
+          {/* Category Icons */}
+          <div className="mb-4">
+            <label className="block text-gray-400 mb-2">Category Icons</label>
+            <input
+              type="text"
+              {...register("icon")}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              accept="image/*"
+            />
+            {errors.categoryIcons && <span className="text-red-500">Category Icon is required</span>}
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 focus:outline-none"
+          >
+            Add Category
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default AddSpcategories;

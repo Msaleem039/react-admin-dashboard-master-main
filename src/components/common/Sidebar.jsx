@@ -7,6 +7,8 @@ import { GiTeacher } from "react-icons/gi";
 import { MdFolderSpecial } from "react-icons/md";
 import { TbWriting } from "react-icons/tb";
 import { FaQq } from "react-icons/fa6";
+import { QueueListIcon } from "@heroicons/react/24/outline";
+import { BsQuestion } from "react-icons/bs";
 
 const SIDEBAR_ITEMS = [
 	{
@@ -60,7 +62,9 @@ const SIDEBAR_ITEMS = [
 	{ name: "Faqs", icon: FaQq, color: "#F59E0B", href: "#" ,
 		dropdown: [
             { name: "Faqs", icon: BiCategory, color: "#8B5CF6", href: "/faqs" },
-            { name: "E-Flyers", icon: BookAIcon, color: "#EC4899", href: "#" },
+			{ name: "Faqs-Category", icon: BookAIcon, color: "#EC4899", href: "#" },
+			{ name: "Questions", icon:BsQuestion, color: "#EC4899", href: "#" },
+         
 		]
 	},
 	{ name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "/analytics" },

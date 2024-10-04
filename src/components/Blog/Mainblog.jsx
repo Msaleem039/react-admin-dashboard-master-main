@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 
 
 
-import Eflayer from "./Eflayer";
-import Header from "../common/Header";
+
 import StatCard from "../common/StatCard";
-import Blog from "./Blog";
+import Header from "../common/Header";
+import BlogCategories from "./BlogCategories";
+
 
 const userStats = {
 	totalUsers: 152845,
@@ -44,7 +45,7 @@ const Mainblog = () => {
 					<StatCard name='Churn Rate' icon={UserX} value={userStats.churnRate} color='#EF4444' />
 				</motion.div>
 
-				<Blog/>
+				<BlogCategories/>
 
 				{/* USER CHARTS */}
 				{/* <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8'>

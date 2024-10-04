@@ -38,13 +38,13 @@ const Courses = () => {
 	  >
 		{!isAddInstructorPage && (
 		  <>
-			<div className='flex justify-between items-center mb-6'>
+			<div className='items-center mb-6'>
 			  {/* Title */}
-			  <h2 className='text-2xl font-semibold text-gray-100 cursor-pointer'>
+			  <h2 className=' text-center text-2xl pb-4 font-semibold text-gray-100 cursor-pointer'>
 				Courses
 			  </h2>
 			  {/* Search and Add Instructor Button */}
-			  <div className='flex items-center space-x-4'>
+			  <div className='flex justify-center items-center space-x-4'>
 				{/* Search Bar */}
 				<div className='relative'>
 				  <input
@@ -59,7 +59,7 @@ const Courses = () => {
 	  
 				{/* Add Instructor Button */}
 				<Link to='adduser'>
-				  <button className='bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300'>
+				  <button className='bg-blue-600 hover:bg-blue-500 text-center text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300'>
 					Add Courses
 				  </button>
 				</Link>

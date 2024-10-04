@@ -41,9 +41,9 @@ const AddBlogPost = () => {
   };
 
   return (
-    <div className="w-full h-screen overflow-y-auto">
-      <Header />
-      <div className=" bg-gray-800 rounded-lg shadow-md max-w-lg mx-auto mt-16"> {/* Added margin top for content below the header */}
+    <div className="">
+      
+      <div className="p-6 bg-gray-800 rounded-lg shadow-md max-w-lg mx-auto mt-16"> {/* Added margin top for content below the header */}
         <h2 className='text-3xl font-semibold text-gray-100 mb-6 text-center'>
           Add Blog Post
         </h2>

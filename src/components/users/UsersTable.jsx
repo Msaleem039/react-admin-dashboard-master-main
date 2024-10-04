@@ -36,14 +36,14 @@ const UsersTable = () => {
 	  >
 		{!isAddInstructorPage && (
 		  <>
-			<div className='flex justify-between items-center mb-6'>
+			<div className=' items-center mb-6'>
 			  {/* Title */}
-			  <h2 className='text-2xl font-semibold text-gray-100 cursor-pointer'>
+			  <h2 className='text-center py-5 text-2xl font-semibold text-gray-100 cursor-pointer'>
 				Instructor
 			  </h2>
 	  
 			  {/* Search and Add Instructor Button */}
-			  <div className='flex items-center space-x-4'>
+			  <div className='flex justify-center items-center space-x-4'>
 				{/* Search Bar */}
 				<div className='relative'>
 				  <input

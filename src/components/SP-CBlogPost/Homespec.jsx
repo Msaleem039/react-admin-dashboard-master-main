@@ -12,7 +12,7 @@ const userData = [
   { id: 5, name: "Charlie Wilson", email: "charlie@example.com", role: "Moderator", status: "Active" },
 ];
 
-const Blogpost = () => {
+const Homespec = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredUsers, setFilteredUsers] = useState(userData);
   const location = useLocation();
@@ -39,7 +39,7 @@ const Blogpost = () => {
     >
       {!isAddBlogPage && (
         <>
-          <div className="text-center py-5 items-center mb-6">
+          <div className=" text-center py-5 items-center mb-6">
             <h2 className="text-2xl font-semibold text-gray-100 cursor-pointer">
               Blog Posts
             </h2>
@@ -54,7 +54,7 @@ const Blogpost = () => {
                 />
                 <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
               </div>
-              <Link to="addblogpost">
+              <Link to="/addspc">
                 <button className="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300">
                   Add Blog
                 </button>
@@ -145,4 +145,4 @@ const Blogpost = () => {
   );
 };
 
-export default Blogpost;
+export default Homespec;
